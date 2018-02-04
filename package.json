@@ -1,0 +1,9 @@
+{
+  "name": "migle",
+  "version": "1.0.0",
+  "description": "Omnium information system",
+  "main": "index.js",
+  "repository": "git@github.com:migber/omnium.git",
+  "author": "Migle Beresineviciute <migle.brs@gmail.com>",
+  "license": "MIT"
+}
