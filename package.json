@@ -5,5 +5,29 @@
   "main": "index.js",
   "repository": "git@github.com:migber/omnium.git",
   "author": "Migle Beresineviciute <migle.brs@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "babel server -d lib",
+    "dev": "nodemon server/index.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-node6": "^11.0.0",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.2",
+    "nodemon": "^1.14.12",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.35.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^4.0.0"
+  }
 }
