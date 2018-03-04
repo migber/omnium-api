@@ -1,36 +1,47 @@
-'use strict';
+'use strict'
+
 module.exports = (sequelize, DataTypes) => {
-  var Cyclist = sequelize.define('Cyclist', {
+  const Cyclist = sequelize.define('Cyclist', {
     firstName: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING(50),
+      allowNull: false,
     },
     lastName: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING(100),
+      allowNull: false,
     },
     uciCode: {
-      type: DataTypes.INTEGER,
-      unique: true
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      unique: true,
     },
-    team: DataTypes.STRING,
+    team: {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+    },
     nationality: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING(10),
+      allowNull: false,
     },
-    birthdate: DataTypes.DATE,
-    gender: DataTypes.STRING,
+    birthdate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    gender: {
+      type: DataTypes.STRING(15),
+      allowNull: false,
+    },
     category: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  }, {});
-  Cyclist.associate = function(models) {
+      type: DataTypes.STRING(40),
+      allowNull: false,
+    },
+  }, {})
+  Cyclist.associate = (models) => {
     // associations can be defined here
     Cyclist.hasMany(models.Score, {
       foreignKey: 'CyclistId',
-      onDelete: 'CASCADE'
+      onDelete: 'CASCADE',
     })
-  };
-  return Cyclist;
-};
+  }
+  return Cyclist
+}

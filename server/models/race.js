@@ -1,24 +1,30 @@
-'use strict';
+'use strict'
+
 module.exports = (sequelize, DataTypes) => {
-  var Race = sequelize.define('Race', {
-    elapseTime: DataTypes.STRING,
+  const Race = sequelize.define('Race', {
+    elapseTime: {
+      type: DataTypes.STRING,
+    },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    avgSpeed: DataTypes.DECIMAL,
-    description: DataTypes.STRING
-  }, {});
-  Race.associate = function(models) {
+    avgSpeed: DataTypes.DECIMAL(5.3),
+    description: {
+      type: DataTypes.STRING(300),
+      allowNull: false,
+    },
+  }, {})
+  Race.associate = (models) => {
     // associations can be defined here
     Race.hasMany(models.Score, {
       foreignKey: 'RaceId',
-      onDelete: 'CASCADE'
-    }),
-    Race.belongsTo(models.Omnium, {
-      foreignKey: 'OmniumId',
-      ondelete: 'CASCADE'
+      onDelete: 'CASCADE',
     })
-  };
-  return Race;
-};
+    Race.belongsTo(models.Event, {
+      foreignKey: 'EventId',
+      onDelete: 'CASCADE',
+    })
+  }
+  return Race
+}
