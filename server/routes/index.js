@@ -11,14 +11,18 @@ router.use(express.static('public'))
 
 
 router.use((req, res, next) => {
+  console.log('token validation')
   // check header or url parameters or post parameters for token
-  const token = req.body.token || req.query.token || req.headers['x-access-token']
+  const bearerToken = req.body.token || req.query.token || req.headers.authorization
+  const token = bearerToken.replace('Bearer ', '')
   const data = {
     access_token: token,
   }
   // decode token
   if (token) {
-    request.post(`https://www.googleapis.com/oauth2/v3/tokeninfo`, { form: data }, (error, response, body) => {
+    console.log(token)
+    request.post('https://www.googleapis.com/oauth2/v3/tokeninfo', { form: data }, (error, response, body) => {
+      // console.log(response)
       if (response.statusCode === 200) {
         console.log(body)
         next()
@@ -35,10 +39,11 @@ router.use((req, res, next) => {
   }
 })
 
-router.use(require('../handlers/cyclist').router)
-router.use(require('../handlers/event').router)
-router.use(require('../handlers/race').router)
-router.use(require('../handlers/score').router)
-router.use(require('../handlers/sprint').router)
+router.use(require('../controllers/cyclist').router)
+router.use(require('../controllers/event').router)
+router.use(require('../controllers/race').router)
+router.use(require('../controllers/score').router)
+router.use(require('../controllers/sprint').router)
+router.use(require('../controllers/user').router)
 
 module.exports = router
