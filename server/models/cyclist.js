@@ -35,6 +35,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(40),
       allowNull: false,
     },
+    approved: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   }, {})
   Cyclist.associate = (models) => {
     // associations can be defined here

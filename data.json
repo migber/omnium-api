@@ -100,7 +100,7 @@
 //     type: Sequelize.INTEGER
 //   }
 // })
-// node_modules/.bin/sequelize model:create --name Sprints --attributes "sprintNumber:integer, sprintPoints:integer"
+// node_modules/.bin/sequelize model:create --name Sprint --attributes "sprintNumber:integer, sprintPoints:integer"
 //node_modules/.bin/sequelize model:create --name Score --attributes "raceNumber:integer, lapPlusPoints:integer, lapMinusPoints:integer, points:integer, finishPlace:integer, raceDate:date, place:integer, totalPoints:integer"
 // const Omnium = this.sequelize.define('omnium', {
 //   name: {

@@ -37,6 +37,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      approved: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
       category: {
         type: Sequelize.STRING,
         allowNull: false,
