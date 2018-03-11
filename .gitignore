@@ -4,4 +4,4 @@ jspm_packages/
 
 # dotenv environment variables file
 .env
-config.json*
+config/config.json*
