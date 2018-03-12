@@ -5,3 +5,4 @@ jspm_packages/
 # dotenv environment variables file
 .env
 config/config.json*
+/server/config/config-secret.json

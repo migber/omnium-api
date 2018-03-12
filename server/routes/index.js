@@ -12,12 +12,16 @@ router.use(express.static('public'))
 
 router.use((req, res, next) => {
   console.log('token validation')
+  console.log(req)
   // check header or url parameters or post parameters for token
   const bearerToken = req.body.token || req.query.token || req.headers.authorization
+  console.log(bearerToken)
   const token = bearerToken.replace('Bearer ', '')
+  console.log(token)
   const data = {
     access_token: token,
   }
+  console.log(data)
   // decode token
   if (token) {
     console.log(token)
