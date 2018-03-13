@@ -121,7 +121,7 @@ async function findUser(req, resp) {
 }
 async function createLoggedUser(req, resp) {
   console.log('Create Logged user')
-  const { user } = req.body
+  const user = req.body
   const today = moment().utc().utcOffset(120).format('YYYY-MM-DD')
   console.log('Logged user')
   User.create({
@@ -145,7 +145,7 @@ router.get('/api/users', getUsersList)
 router.get('/api/users/:userId', getUser)
 router.post('/api/users', createUser)
 router.post('/api/users/exists', findUser)
-router.post('/api/users/creteLogged', createLoggedUser)
+router.post('/api/users/createLogged', createLoggedUser)
 router.put('/api/users/:userId', editUser)
 router.put('/api/users/:userId/approve', updateApproveValue)
 router.delete('/api/users/:userId', deleteUser)

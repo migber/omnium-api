@@ -1,4 +1,4 @@
-'use strict'
+
 
 const express = require('express')
 
@@ -6,7 +6,8 @@ const router = express.Router()
 const bodyParser = require('body-parser')
 const request = require('request')
 
-const routesWithoutAuth = ['/api/users/exists', '/api/users/creteLogged']
+const routesWithoutAuth = ['/api/users/exists', '/api/users/createLogged', '/api/cyclists',
+  '/api/events', '/api/users']
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(express.static('public'))
 
@@ -14,7 +15,9 @@ router.use(express.static('public'))
 router.use((req, res, next) => {
   console.log('token validation')
   console.log(req.url)
+  console.log(routesWithoutAuth.includes(req.url))
   if (routesWithoutAuth.includes(req.url)) {
+    console.log('next')
     next()
   } else {
     const bearerToken = req.body.token || req.query.token || req.headers.authorization
